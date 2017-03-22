@@ -5,10 +5,7 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   resolve: {
-    modules: [
-      'node_modules',
-    ],
-    extensions: ['.js', '.jsx', '.less'],
+    extensions: ['', '.js', '.jsx', '.less'],
   },
   entry: {
     main: [ './app.js' ],
@@ -21,138 +18,56 @@ module.exports = {
   plugins: [
   ],
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [ ['es2015', { modules: false }] ]
-            },
-          }
+        loaders: [
+          'babel-loader?presets[]=es2015'
         ],
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]',
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              plugins: () => [ autoprefixer ],
-            },
-          },
+        loaders: [
+          'style-loader',
+          'css-loader?sourceMap=true&localIndentName=[name]__[local]--[hash:base64:5]',
         ],
       },
       {
         test: /\.less$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]',
-            },
-          },
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
+        loaders: [
+          'style-loader',
+          'css-loader?sourceMap=true&localIndentName=[name]__[local]--[hash:base64:5]',
+          'less-loader?sourceMap=true',
         ],
       },
       {
-        test: /\.otf$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'fonts/[name].[ext]',
-            },
-          },
-        ],
+        test: /\.otf(.*)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]',
       },
       {
-        test: /\.woff$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'fonts/[name].[ext]',
-            },
-          },
-        ],
+        test: /\.woff(.*)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]',
       },
       {
-        test: /\.ttf$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'fonts/[name].[ext]',
-            },
-          },
-        ],
+        test: /\.ttf(.*)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]',
       },
       {
-        test: /\.eot$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'fonts/[name].[ext]',
-            },
-          },
-        ],
+        test: /\.eot(.*)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]',
       },
       {
-        test: /\.jpg$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'images/[name].[ext]',
-            },
-          },
-        ],
+        test: /\.jpg(.*)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]',
       },
       {
-        test: /\.png$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'images/[name].[ext]',
-            },
-          },
-        ],
+        test: /\.png(.*)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]',
       },
       {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'images/[name].[ext]',
-            },
-          },
-        ],
+        test: /\.svg(.*)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]',
       },
     ],
   },

@@ -19,7 +19,7 @@ module.exports = Object.assign({}, webpackBaseConfig, {
   plugins: [
     ...webpackBaseConfig.plugins,
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify('development') }
     }),
