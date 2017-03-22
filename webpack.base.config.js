@@ -35,32 +35,14 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]',
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              plugins: () => [ autoprefixer ],
-            },
-          },
-        ],
-      },
-      {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader',
+              loader: 'style-loader',
+              options: {
+                sourceMap: true,
+                convertToAbsoluteUrls: true,
+              },
           },
           {
             loader: 'css-loader',
