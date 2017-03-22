@@ -24,4 +24,25 @@ module.exports = Object.assign({}, webpackBaseConfig, {
       'process.env': { NODE_ENV: JSON.stringify('development') }
     }),
   ],
+  devServer: {
+    host: '0.0.0.0',
+    port: '8080',
+    inline: true,
+    stats: {
+      assets: true,
+      colors: true,
+      version: false,
+      hash: false,
+      timings: false,
+      chunks: false,
+      chunkModules: false,
+    },
+    publicPath: '/bundle/',
+    quiet: false,
+    contentBase: './',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'false'
+    },
+  },
 });

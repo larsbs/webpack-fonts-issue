@@ -29,14 +29,14 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: [
-          'style-loader',
+            'style-loader?convertToAbsoluteUrls',
           'css-loader?sourceMap=true&localIndentName=[name]__[local]--[hash:base64:5]',
         ],
       },
       {
         test: /\.less$/,
         loaders: [
-          'style-loader',
+          'style-loader?convertToAbsoluteUrls',
           'css-loader?sourceMap=true&localIndentName=[name]__[local]--[hash:base64:5]',
           'less-loader?sourceMap=true',
         ],
